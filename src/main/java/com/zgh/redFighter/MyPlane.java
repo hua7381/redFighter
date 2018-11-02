@@ -95,7 +95,7 @@ public class MyPlane extends Plane {
 g.drawOval(OX-radius, OY-radius, radius*2, radius*2);*/
 			break;
 		case PROTECTED:	
-			if(y > Client.UPBAR + Client.HEIGHT - h)
+			if(y > Application.UPBAR + Application.HEIGHT - h)
 				y -= 2;
 			else
 				move();
@@ -127,10 +127,10 @@ g.drawOval(OX-radius, OY-radius, radius*2, radius*2);*/
 		if(d) y += SPEED;
 		
 		//防止出界的代码
-		if(x<Client.SIDEBAR) x= Client.SIDEBAR;
-		else if(x>Client.SIDEBAR + Client.WIDTH - w) x = Client.SIDEBAR+Client.WIDTH-w;
-		if(y<Client.UPBAR) y = Client.UPBAR;
-		else if(y>Client.UPBAR+Client.HEIGHT - h) y = Client.UPBAR + Client.HEIGHT-h;
+		if(x<Application.SIDEBAR) x= Application.SIDEBAR;
+		else if(x>Application.SIDEBAR + Application.WIDTH - w) x = Application.SIDEBAR+Application.WIDTH-w;
+		if(y<Application.UPBAR) y = Application.UPBAR;
+		else if(y>Application.UPBAR+Application.HEIGHT - h) y = Application.UPBAR + Application.HEIGHT-h;
 		
 		if(firing) tryToFire();
 		
@@ -171,8 +171,8 @@ g.drawOval(OX-radius, OY-radius, radius*2, radius*2);*/
 	private void revive() {
 		this.state = PROTECTED;
 		this.protectedLoop = this.PROTECTED_TIME;
-		x = Client.SIDEBAR+Client.WIDTH/2-this.getWidth()/2;
-		y = Client.UPBAR+Client.HEIGHT + 2*h;
+		x = Application.SIDEBAR+Application.WIDTH/2-this.getWidth()/2;
+		y = Application.UPBAR+Application.HEIGHT + 2*h;
 		frame = 0;
 	}
 	
@@ -211,7 +211,7 @@ g.drawOval(OX-radius, OY-radius, radius*2, radius*2);*/
 	public void drawStingOfLive(Graphics g) {
 		g.setFont(new Font(Font.MONOSPACED,Font.BOLD,15));
 		g.setColor(Color.GREEN);
-		g.drawString("life X "+String.valueOf(life), Client.SIDEBAR, Client.UPBAR+15);
+		g.drawString("life X "+String.valueOf(life), Application.SIDEBAR, Application.UPBAR+15);
 	}
 
 	public void powerPromote() {

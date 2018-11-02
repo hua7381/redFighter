@@ -1,6 +1,6 @@
 package com.zgh.redFighter;
 
-public class EnPlane2 extends EnPlane {
+public class EnPlane2 extends EnemyPlane {
 	
 	EnPlane2(GameFrame gf) {
 		super(gf);
@@ -19,7 +19,7 @@ public class EnPlane2 extends EnPlane {
 	}
 
 	int minY = -100;
-	int maxY = Client.UPBAR + 70;
+	int maxY = Application.UPBAR + 70;
 	@Override
 	void move() {
 		x += xSpeed;
@@ -27,7 +27,7 @@ public class EnPlane2 extends EnPlane {
 		//控制竖直方向来回反弹
 		if(y > maxY) {
 			ySpeed = - ySpeed;
-			minY = Client.UPBAR;
+			minY = Application.UPBAR;
 		} else if(y < minY) {
 			ySpeed = - ySpeed;
 		}
@@ -47,11 +47,11 @@ public class EnPlane2 extends EnPlane {
 			x = 0;
 			xSpeed = -xSpeed;
 		}
-		if (x > Client.SIDEBAR + Client.WIDTH - w) { // 碰到右边界停止并转向
-			x = Client.SIDEBAR + Client.WIDTH - w;
+		if (x > Application.SIDEBAR + Application.WIDTH - w) { // 碰到右边界停止并转向
+			x = Application.SIDEBAR + Application.WIDTH - w;
 			xSpeed = -xSpeed;
 		}
-		if (y > Client.UPBAR + Client.HEIGHT) // 越过下边界后死亡
+		if (y > Application.UPBAR + Application.HEIGHT) // 越过下边界后死亡
 			this.state = DEAD;
 	}
 

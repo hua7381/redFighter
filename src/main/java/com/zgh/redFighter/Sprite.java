@@ -2,8 +2,13 @@ package com.zgh.redFighter;
 
 import java.util.Random;
 
+/**
+ * 
+ * @author zhangguihua(hua7381@163.com)
+ * @date: 2018年11月1日
+ */
 public class Sprite {
-	float x = Client.SIDEBAR, y = Client.UPBAR;//默认位置为左上角
+	float x = Application.SIDEBAR, y = Application.UPBAR;//默认位置为左上角
 	float xSpeed, ySpeed;
 	int w, h;
 	int frame = 0;//帧数，从零开始计数

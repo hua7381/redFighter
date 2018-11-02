@@ -47,10 +47,10 @@ public class MyBullet extends Sprite{
 	}
 	
 	private void hitEnemies() {
-		EnPlane en;
+		EnemyPlane en;
 		for(int i=0; i<gf.enemies.size(); i++) {
 			en = gf.enemies.get(i);
-			if((en.state == ALIVE || en.getState()==EnPlane.COMING) && this.intersect(en)) {
+			if((en.state == ALIVE || en.getState()==EnemyPlane.COMING) && this.intersect(en)) {
 				this.state = EXPLODE;
 				en.getHurt();
 			}

@@ -47,16 +47,16 @@ public class Wepon extends Sprite {
 		y += ySpeed;
 		hitMyPlane();
 		if(reboundTimes < 5) {//若还剩有次数，反弹
-			if(x > Client.SIDEBAR + Client.WIDTH - w || x < Client.SIDEBAR) {
+			if(x > Application.SIDEBAR + Application.WIDTH - w || x < Application.SIDEBAR) {
 				xSpeed = -xSpeed;
 				reboundTimes ++;
 			}
-			if(y > Client.UPBAR + Client.HEIGHT - h || y < Client.UPBAR) {
+			if(y > Application.UPBAR + Application.HEIGHT - h || y < Application.UPBAR) {
 				ySpeed = -ySpeed;
 				reboundTimes ++;
 			}
 		} else {//若超过了碰撞次数，不再反弹，如果出界则消失
-			if(x<0 || x>Client.SIDEBAR+Client.WIDTH || y<0 || y>Client.UPBAR+Client.HEIGHT) {
+			if(x<0 || x>Application.SIDEBAR+Application.WIDTH || y<0 || y>Application.UPBAR+Application.HEIGHT) {
 				gf.wepons.remove(this);
 			}
 		}

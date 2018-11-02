@@ -14,6 +14,6 @@ public class Score {
 	public void draw(Graphics g) {
 		g.setColor(Color.green);
 		g.setFont(font);
-		g.drawString("得分："+String.valueOf(score), Client.SIDEBAR + Client.WIDTH/2, Client.UPBAR + fontSize);
+		g.drawString("得分："+String.valueOf(score), Application.SIDEBAR + Application.WIDTH/2, Application.UPBAR + fontSize);
 	}
 }

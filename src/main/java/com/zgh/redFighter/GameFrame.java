@@ -20,7 +20,7 @@ public class GameFrame extends Frame implements Runnable{
 	MyPlane myPlane;
 	MyBullet[] myBullets = new MyBullet[100];//装myPlane的子弹的数组，可重复利用
 	EnBullet[] enBullets = new EnBullet[500];//装敌军子弹的数组
-	List<EnPlane> enemies = new ArrayList<EnPlane>();//装敌机的
+	List<EnemyPlane> enemies = new ArrayList<EnemyPlane>();//装敌机的
 	List<Wepon> wepons = new ArrayList<Wepon>(); //装武器道具的
 	Map1 map1 = new Map1();
 	Random random = new Random();
@@ -93,7 +93,7 @@ public class GameFrame extends Frame implements Runnable{
 		}
 		myPlane = new MyPlane(this);
 		myPlane.setState(Sprite.ALIVE);
-		myPlane.setLocation(Client.SIDEBAR+Client.WIDTH/2-myPlane.getWidth()/2, Client.UPBAR+Client.HEIGHT-myPlane.getHeight());
+		myPlane.setLocation(Application.SIDEBAR+Application.WIDTH/2-myPlane.getWidth()/2, Application.UPBAR+Application.HEIGHT-myPlane.getHeight());
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class GameFrame extends Frame implements Runnable{
 		refreshEn();
 		
 		drawMap(g,imgMap1); //画地图
-		EnPlane en;
+		EnemyPlane en;
 		for(int i=0; i<enemies.size(); i++) {  //画敌机
 			en = enemies.get(i);
 			en.draw(g);
@@ -126,7 +126,7 @@ public class GameFrame extends Frame implements Runnable{
 		g.drawString("num of enemies:" + enemies.size() , Client.SIDEBAR, Client.UPBAR+25);
 		*/
 		g.setColor(Color.WHITE);
-		g.drawString("wepon count = "+ wepons.size(), Client.SIDEBAR, Client.UPBAR+10);
+		g.drawString("wepon count = "+ wepons.size(), Application.SIDEBAR, Application.UPBAR+10);
 		
 		score.draw(g);
 		myPlane.drawStingOfLive(g);
@@ -137,7 +137,7 @@ public class GameFrame extends Frame implements Runnable{
 			return;
 		}
 		
-		EnPlane en;
+		EnemyPlane en;
 		mapLoop++;
 		if(mapLoop==15) {  //每x个周期读取一次map
 			mapLoop = 0;
@@ -145,7 +145,7 @@ public class GameFrame extends Frame implements Runnable{
 				int n = map1.points[mapIndex][i];
 				if(n>=1 && n<=5) {
 					en = revivePlane(map1.points[mapIndex][i]);
-					en.setLocation(Client.SIDEBAR + Client.WIDTH*i/map1.points[mapIndex].length,
+					en.setLocation(Application.SIDEBAR + Application.WIDTH*i/map1.points[mapIndex].length,
 							-en.getHeight()); //根据其在Map的数组中的水平方向上的位置来设置其初始位置
 				}
 			}
@@ -156,8 +156,8 @@ public class GameFrame extends Frame implements Runnable{
 		}
 	}
 	
-	private EnPlane revivePlane(int type) {
-		EnPlane en = null;
+	private EnemyPlane revivePlane(int type) {
+		EnemyPlane en = null;
 		switch(type) {
 		case 1:	en = new EnPlane1(this);	break;
 		case 2:	en = new EnPlane2(this);	break;
@@ -172,8 +172,8 @@ public class GameFrame extends Frame implements Runnable{
 	private void drawMap(Graphics g, Image img) { //画不断滚动的背景地图
 		this.scrollIndex += 4;
 		if(scrollIndex > 0) scrollIndex = -img.getHeight(null);
-		for(int i=scrollIndex; i<Client.HEIGHT; i+=img.getHeight(null)) {
-			g.drawImage(img, Client.SIDEBAR, i + Client.UPBAR, null);
+		for(int i=scrollIndex; i<Application.HEIGHT; i+=img.getHeight(null)) {
+			g.drawImage(img, Application.SIDEBAR, i + Application.UPBAR, null);
 		}
 	}
 
@@ -193,7 +193,7 @@ public class GameFrame extends Frame implements Runnable{
 	@Override
 	public void update(Graphics g) {
 		if(offScreenImage == null) 
-			offScreenImage = this.createImage(Client.WIDTH + Client.SIDEBAR*2, Client.HEIGHT + Client.UPBAR);//创建缓冲图
+			offScreenImage = this.createImage(Application.WIDTH + Application.SIDEBAR*2, Application.HEIGHT + Application.UPBAR);//创建缓冲图
 		Graphics gOffScreen = offScreenImage.getGraphics();//获取缓冲图的画笔
 		
 		paint(gOffScreen); //将内容画在缓冲图上

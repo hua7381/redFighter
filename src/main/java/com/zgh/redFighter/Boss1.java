@@ -1,6 +1,6 @@
 package com.zgh.redFighter;
 
-public class Boss1 extends EnPlane{
+public class Boss1 extends EnemyPlane{
 
 	final int RELOADTIME = 37;
 	int reloadLoop = RELOADTIME;
@@ -26,7 +26,7 @@ public class Boss1 extends EnPlane{
 	void coming() {
 		tempY = y;
 		y += 3;
-		if(y > Client.UPBAR + yMax) {
+		if(y > Application.UPBAR + yMax) {
 			y = tempY; //退到上一步
 			state = ALIVE;
 		}
@@ -39,19 +39,19 @@ public class Boss1 extends EnPlane{
 		x += xSpeed;
 		y += ySpeed;
 		//控制竖直方向来回反弹
-		if (y > Client.UPBAR + yMax || y < Client.UPBAR) {
+		if (y > Application.UPBAR + yMax || y < Application.UPBAR) {
 			ySpeed = -ySpeed;
 		}
-		if(y < Client.UPBAR) {
+		if(y < Application.UPBAR) {
 			y = tempY;
 			ySpeed = 2;
-		} else if(y > Client.UPBAR + yMax) {
+		} else if(y > Application.UPBAR + yMax) {
 			y = tempY;
 			ySpeed = -1;
 		}
 		
 		//控制水平方向来回反弹
-		if(x < Client.SIDEBAR || x > Client.SIDEBAR+Client.WIDTH-w) {
+		if(x < Application.SIDEBAR || x > Application.SIDEBAR+Application.WIDTH-w) {
 			x = tempX; //退到上一步
 			xSpeed = -xSpeed;
 		}

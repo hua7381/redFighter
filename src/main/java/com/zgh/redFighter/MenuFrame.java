@@ -67,8 +67,8 @@ public class MenuFrame extends Frame implements Runnable{
 						case START:
 							setState(START); //使run方法中的while循环结束
 							setVisible(false);
-							Client.thread = new Thread(new GameFrame());
-							Client.thread.start();
+							Application.thread = new Thread(new GameFrame());
+							Application.thread.start();
 							break;
 						case SETTING:
 							setState(SETTING);
@@ -114,11 +114,11 @@ public class MenuFrame extends Frame implements Runnable{
 	public void paint(Graphics g) {
 		switch(state) {
 		case LOGO:
-			g.drawImage(imgLogo, Client.SIDEBAR, Client.UPBAR, null);
+			g.drawImage(imgLogo, Application.SIDEBAR, Application.UPBAR, null);
 			flash(g);
 			break;
 		case MENU:
-			g.drawImage(imgMenu, Client.SIDEBAR, Client.UPBAR, null);
+			g.drawImage(imgMenu, Application.SIDEBAR, Application.UPBAR, null);
 			drawOptions(g);
 			break;
 		case HELP:
@@ -151,43 +151,43 @@ public class MenuFrame extends Frame implements Runnable{
 		refresh(g);
 		g.setColor(Color.WHITE);
 		g.setFont(fontNomal);
-		g.drawString("帮助文档：", Client.SIDEBAR, Client.UPBAR+30);
-		g.drawString("按Esc返回", 0, Client.UPBAR+Client.HEIGHT-3);
+		g.drawString("帮助文档：", Application.SIDEBAR, Application.UPBAR+30);
+		g.drawString("按Esc返回", 0, Application.UPBAR+Application.HEIGHT-3);
 	}
 	
 	private void drawSettings(Graphics g) {
 		refresh(g);
 		g.setColor(Color.WHITE);
 		g.setFont(fontNomal);
-		g.drawString("游戏设置：", Client.SIDEBAR, Client.UPBAR+30);
-		g.drawString("按Esc返回", 0, Client.UPBAR+Client.HEIGHT-3);
+		g.drawString("游戏设置：", Application.SIDEBAR, Application.UPBAR+30);
+		g.drawString("按Esc返回", 0, Application.UPBAR+Application.HEIGHT-3);
 	}
 	
 	private void drawAbout(Graphics g) {
 		refresh(g);
 		g.setColor(Color.WHITE);
 		g.setFont(fontNomal);
-		g.drawString("关于本游戏：", Client.SIDEBAR, Client.UPBAR+30);
-		g.drawString("按Esc返回", 0, Client.UPBAR+Client.HEIGHT-3);
+		g.drawString("关于本游戏：", Application.SIDEBAR, Application.UPBAR+30);
+		g.drawString("按Esc返回", 0, Application.UPBAR+Application.HEIGHT-3);
 	}
 	
 	private void refresh(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(Client.SIDEBAR, Client.UPBAR, Client.WIDTH, Client.HEIGHT);//刷屏
+		g.fillRect(Application.SIDEBAR, Application.UPBAR, Application.WIDTH, Application.HEIGHT);//刷屏
 	}
 	
 	
 	private void flash(Graphics g) { //字符闪烁
 		flashIndex ++;
 		if(flashIndex > 500) flashIndex = 0;
-		if(flashIndex % 50 > 18) g.drawImage(imgAnyKey, Client.SIDEBAR + 65, Client.UPBAR + 240, null);
+		if(flashIndex % 50 > 18) g.drawImage(imgAnyKey, Application.SIDEBAR + 65, Application.UPBAR + 240, null);
 	}
 	
 	private Image offScreenImage = null;
 	@Override
 	public void update(Graphics g) {
 		if(offScreenImage == null) 
-			offScreenImage = this.createImage(Client.WIDTH + Client.SIDEBAR*2, Client.HEIGHT + Client.UPBAR);//创建缓冲图
+			offScreenImage = this.createImage(Application.WIDTH + Application.SIDEBAR*2, Application.HEIGHT + Application.UPBAR);//创建缓冲图
 		Graphics gOffScreen = offScreenImage.getGraphics();//获取缓冲图的画笔
 		
 		paint(gOffScreen); //将内容画在缓冲图上

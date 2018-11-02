@@ -1,6 +1,6 @@
 package com.zgh.redFighter;
 
-public class EnPlane1 extends EnPlane {
+public class EnPlane1 extends EnemyPlane {
 	// 不同种类的EnPlane之间的区别只有如下属性和move方法。
 
 	EnPlane1(GameFrame gf) {
@@ -33,7 +33,7 @@ public class EnPlane1 extends EnPlane {
 			tryToFire();
 		}
 		
-		if(y > Client.UPBAR + 200) //超过屏幕的一半后进入撤退状态
+		if(y > Application.UPBAR + 200) //超过屏幕的一半后进入撤退状态
 			state = RETREAT;
 
 		// 处理出界
@@ -41,11 +41,11 @@ public class EnPlane1 extends EnPlane {
 			x = 0;
 			xSpeed = -xSpeed;
 		}
-		if (x > Client.SIDEBAR + Client.WIDTH - w) { // 碰到左边界停止并转向
-			x = Client.SIDEBAR + Client.WIDTH - w;
+		if (x > Application.SIDEBAR + Application.WIDTH - w) { // 碰到左边界停止并转向
+			x = Application.SIDEBAR + Application.WIDTH - w;
 			xSpeed = -xSpeed;
 		}
-		if (y > Client.UPBAR + Client.HEIGHT) // 越过下边界后死亡
+		if (y > Application.UPBAR + Application.HEIGHT) // 越过下边界后死亡
 			this.state = DEAD;
 		
 	}
@@ -58,7 +58,7 @@ public class EnPlane1 extends EnPlane {
 	@Override
 	void coming() {
 		y += ySpeed*6;
-		if(y > Client.UPBAR + 40)
+		if(y > Application.UPBAR + 40)
 			state = ALIVE;
 	}
 
@@ -66,7 +66,7 @@ public class EnPlane1 extends EnPlane {
 	void retreat() { //重写了该方法，让其有着不同的退场方式
 		y += ySpeed*2;
 		x += xSpeed + (xSpeed>0? 3:-3);
-		if(x<0 || x>Client.SIDEBAR+Client.WIDTH)
+		if(x<0 || x>Application.SIDEBAR+Application.WIDTH)
 			state = DEAD;
 	}
 	

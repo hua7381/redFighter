@@ -1,6 +1,6 @@
 package com.zgh.redFighter;
 
-public class EnPlane4 extends EnPlane {
+public class EnPlane4 extends EnemyPlane {
 	// 不同种类的EnPlane之间的区别只有如下属性和move方法。
 	
 	static final int RELOADTIME = 7;
@@ -21,7 +21,7 @@ public class EnPlane4 extends EnPlane {
 	}
 
 	int minY = -100;
-	int maxY = Client.UPBAR + 80;
+	int maxY = Application.UPBAR + 80;
 	@Override
 	void move() {
 		x += xSpeed;
@@ -29,7 +29,7 @@ public class EnPlane4 extends EnPlane {
 		//控制它在竖直方向上来回移动的代码
 		if(y > maxY) {
 			ySpeed = - ySpeed;
-			minY = Client.UPBAR;
+			minY = Application.UPBAR;
 		} else if(y < minY) {
 			ySpeed = - ySpeed;
 		}
@@ -49,8 +49,8 @@ public class EnPlane4 extends EnPlane {
 			x = 0;
 			xSpeed = -xSpeed;
 		}
-		if (x > Client.SIDEBAR + Client.WIDTH - w) { // 碰到左边界停止并转向
-			x = Client.SIDEBAR + Client.WIDTH - w;
+		if (x > Application.SIDEBAR + Application.WIDTH - w) { // 碰到左边界停止并转向
+			x = Application.SIDEBAR + Application.WIDTH - w;
 			xSpeed = -xSpeed;
 		}
 	}

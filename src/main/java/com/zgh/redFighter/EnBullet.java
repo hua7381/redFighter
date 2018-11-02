@@ -3,6 +3,11 @@ package com.zgh.redFighter;
 import java.awt.Graphics;
 import java.awt.Image;
 
+/**
+ * 敌机子弹
+ * @author zhangguihua(hua7381@163.com)
+ * @date: 2018年11月1日
+ */
 public class EnBullet extends Sprite{
 	static Image img;
 	static int w,h;
@@ -35,7 +40,7 @@ public class EnBullet extends Sprite{
 	private void move() {
 		y += ySpeed;
 		x += xSpeed;
-		if(y > Client.UPBAR+Client.HEIGHT || y<0 || x<0 || x>Client.SIDEBAR+Client.WIDTH) //越过边界后死亡
+		if(y > Application.UPBAR+Application.HEIGHT || y<0 || x<0 || x>Application.SIDEBAR+Application.WIDTH) //越过边界后死亡
 			this.state = DEAD;
 	}
 	

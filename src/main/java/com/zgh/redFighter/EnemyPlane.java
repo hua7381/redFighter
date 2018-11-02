@@ -4,7 +4,12 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
 
-abstract class EnPlane extends Plane{
+/**
+ * 敌机
+ * @author zhangguihua(hua7381@163.com)
+ * @date: 2018年11月1日
+ */
+abstract class EnemyPlane extends Plane{
 	static Random random;//用于获取随机数
 	//static GameFrame gf; //持有对方的引用
 	static final int COMING = 3, RETREAT = 4; //两个新的状态
@@ -25,7 +30,7 @@ abstract class EnPlane extends Plane{
 		random = new Random();//类的对象的初始化必须使用new语句
 	}
 	
-	EnPlane(GameFrame gf){
+	EnemyPlane(GameFrame gf){
 		super(gf);
 		state = COMING;
 	}

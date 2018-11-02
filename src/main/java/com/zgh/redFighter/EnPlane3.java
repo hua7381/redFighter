@@ -1,6 +1,6 @@
 package com.zgh.redFighter;
 
-public class EnPlane3 extends EnPlane {
+public class EnPlane3 extends EnemyPlane {
 	// 不同种类的EnPlane之间的区别只有如下属性和move方法。
 
 	EnPlane3(GameFrame gf) {
@@ -27,26 +27,26 @@ public class EnPlane3 extends EnPlane {
 		}
 
 		// 处理出界
-		if (x < 0 || x > Client.SIDEBAR+Client.WIDTH || y> Client.UPBAR+Client.HEIGHT) { 
+		if (x < 0 || x > Application.SIDEBAR+Application.WIDTH || y> Application.UPBAR+Application.HEIGHT) { 
 			this.state = DEAD;// 超出左、右、下边界就死亡
 		}
 		//控制移动轨迹的代码
-		if(y > Client.UPBAR + 5) xSpeed = 1;
-		if(y > Client.UPBAR + 50) {
+		if(y > Application.UPBAR + 5) xSpeed = 1;
+		if(y > Application.UPBAR + 50) {
 			this.xSpeed = 2;
 			this.ySpeed = 5;
 		}
-		if(y > Client.UPBAR + 70) {
+		if(y > Application.UPBAR + 70) {
 			this.xSpeed = 3;
 			this.ySpeed = 4;
 			
 		}
-		if(y > Client.UPBAR + 90) {
+		if(y > Application.UPBAR + 90) {
 			this.xSpeed = 5;
 			this.ySpeed = 0;
 			this.frame = 1;
 		}
-		if(x > Client.SIDEBAR + 150) {
+		if(x > Application.SIDEBAR + 150) {
 			this.xSpeed = 2;
 			this.ySpeed = -4;
 			this.frame = 2;
